@@ -1,5 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
+const bodyPaser = require('body-parser');
+
 
 // Connects routes
 const constactsRoute = require('./api/routes/contacts')
@@ -7,13 +9,16 @@ const constactsRoute = require('./api/routes/contacts')
 const app = express();
 app.use(morgan('dev'))
 
+app.use(bodyPaser.urlencoded({ extended: true}))
+app.use(bodyPaser.json())
+
 const PORT = process.env.PORT || 3000
 
-//Middleware using "use" key
-app.use((req, res, next) =>{
-    console.log("I am a Middleware Function!")
-    next()    // ustill use of next() it never goes to next operation, means it will be running continuously
-})
+//Middleware using "use" key  // hide because for testing body-parser  but will be never makes conflict
+// app.use((req, res, next) =>{
+//     console.log("I am a Middleware Function!")
+//     next()    // ustill use of next() it never goes to next operation, means it will be running continuously
+// })
 
 
 // use connected API
