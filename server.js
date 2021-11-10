@@ -1,9 +1,12 @@
 const express = require('express');
+const morgan = require('morgan');
 
 // Connects routes
 const constactsRoute = require('./api/routes/contacts')
 
 const app = express();
+app.use(morgan('dev'))
+
 const PORT = process.env.PORT || 3000
 
 //Middleware using "use" key
