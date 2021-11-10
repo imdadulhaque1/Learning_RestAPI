@@ -6,6 +6,12 @@ const constactsRoute = require('./api/routes/contacts')
 const app = express();
 const PORT = process.env.PORT || 3000
 
+//Middleware using "use" key
+app.use((req, res, next) =>{
+    console.log("I am a Middleware Function!")
+    next()    // ustill use of next() it never goes to next operation, means it will be running continuously
+})
+
 
 // use connected API
 app.use("/api/contacts", constactsRoute)
