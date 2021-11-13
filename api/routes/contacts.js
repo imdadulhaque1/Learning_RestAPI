@@ -2,10 +2,13 @@
 const express = require('express');
 const router = express.Router();
 
+// Store the data in contacts array
+const contacts = []
+
 // Get Method
 router.get('/', (req, res, next) =>{
     res.status(200).json({
-        message: "Hello, I am All Contacts Get Route!"
+       contacts
     })
 })
 
@@ -18,15 +21,20 @@ router.get('/', (req, res, next) =>{
 // })
 
 // Post Method
-router.post('/:id', (req, res, next) =>{
+router.post('/', (req, res, next) =>{
     // Connected with body-parser (imported in server.js file)
-    const name = req.body.name;
-    const email = req.body.email;
+    // const name = req.body.name;
+    // const email = req.body.email;
+    
+    // console.log(`Name: ${name} | Email: ${email}`)
+
+    contacts.push({
+        name: req.body.name,
+        email: req.body.email
+    })
 
     res.status(201).json({
-        message: "Hello, I am POST ROUTE from api/routes/contacts!",
-        name, // use the ES-6 rules where is able to used any word when "key" and "value" is same
-        email,
+        message: "Data Saved!",
     })
 })
 
@@ -45,4 +53,4 @@ router.delete('/:id', (req, res, next) =>{
 })
 
 
-module.exports = router
+module.exports = router;

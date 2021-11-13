@@ -1,6 +1,6 @@
-const express = require('express');
-const morgan = require('morgan');
-const bodyPaser = require('body-parser');
+const express = require('express')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
 
 
 // Connects routes
@@ -9,8 +9,9 @@ const constactsRoute = require('./api/routes/contacts')
 const app = express();
 app.use(morgan('dev'))
 
-app.use(bodyPaser.urlencoded({ extended: true}))
-app.use(bodyPaser.json())
+// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true}))
+app.use(bodyParser.json())
 
 const PORT = process.env.PORT || 3000
 
