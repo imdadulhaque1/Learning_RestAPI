@@ -1,6 +1,6 @@
-// const express = require('express').Router();
-const express = require('express');
-const router = express.Router();
+// const express = require('express').Router()
+const express = require('express')
+const router = express.Router()
 
 // Store the data in contacts array
 const contacts = []
